@@ -1,0 +1,65 @@
+Lua Joint の設定例です。
+
+== (1) 異なる周期の回転ジョイントを連動 ==
+
+lua ROOT(カスタムジョイント)を動かすと、全ての歯車が連動します。
+
+=== 設定 ===
+
+http://luajoint.googlecode.com/svn/assets/browser1.jpg
+
+=== 結果 ===
+
+http://luajoint.googlecode.com/svn/assets/sample1.jpg
+
+ * [http://luajoint.googlecode.com/svn/assets/sample1.zip シーンファイル ]
+ * [http://luajoint.googlecode.com/svn/assets/sample1.mov ムービー]
+
+== (2) 直線移動ジョイントと回転ジョイントの連動 ==
+
+lua ROOT(カスタムジョイント)を動かすと、歯車とラックが連動します。
+
+=== 設定 ===
+
+http://luajoint.googlecode.com/svn/assets/browser2.jpg
+
+=== 結果 ===
+
+http://luajoint.googlecode.com/svn/assets/sample2.jpg
+
+ * [http://luajoint.googlecode.com/svn/assets/sample2.zip シーンファイル ]
+ * [http://luajoint.googlecode.com/svn/assets/sample2.mov ムービー]
+
+== (3) 関数を利用した連動 ==
+
+lua ROOT(カスタムジョイント)を動かすと、全ての翼が連動します。 
+ダミーのカスタムジョイントに関数 fn を定義して 
+個々のジョイントからこれを呼び出すことにより、 動きを一元制御しています。 
+また、 変数 d を使って翼の角度を少しずつずらすようにしています。
+
+=== 設定 ===
+
+http://luajoint.googlecode.com/svn/assets/browser3.jpg
+
+=== 結果 ===
+
+http://luajoint.googlecode.com/svn/assets/sample3.jpg
+
+ * [http://luajoint.googlecode.com/svn/assets/sample3.zip シーンファイル ]
+ * [http://luajoint.googlecode.com/svn/assets/sample3.mov ムービー]
+
+== (4) 子要素の位置情報を利用した連動 ==
+
+lua ROOT(カスタムジョイント)を動かすと、クランクが連動します。 
+後々メンテナンスが困難になるかもしれませんが・・・
+
+=== 設定 ===
+
+http://luajoint.googlecode.com/svn/assets/browser4.jpg
+
+=== 結果 ===
+
+http://luajoint.googlecode.com/svn/assets/sample4.jpg
+
+ * [http://luajoint.googlecode.com/svn/assets/sample4.zip シーンファイル ]
+ * [http://luajoint.googlecode.com/svn/assets/sample4.mov ムービー]
