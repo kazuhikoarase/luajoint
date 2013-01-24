@@ -4,7 +4,7 @@
 @rem
 @rem Copyright (c) 2009 Kazuhiko Arase
 @rem
-@rem URL: http://www.d-project.com/
+@rem URL: http://code.google.com/p/luajoint/
 @rem
 @rem Licensed under the MIT license:
 @rem   http://www.opensource.org/licenses/mit-license.php
