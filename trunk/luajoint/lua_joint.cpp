@@ -4,7 +4,7 @@
 //
 // Copyright (c) 2009 Kazuhiko Arase
 //
-// URL: http://www.d-project.com/
+// URL: http://code.google.com/p/luajoint/
 //
 // Licensed under the MIT license:
 //   http://www.opensource.org/licenses/mit-license.php
