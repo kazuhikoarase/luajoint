@@ -6,11 +6,11 @@ lua ROOT(カスタムジョイント)を動かすと、全ての歯車が連動�
 
 == 設定 ==
 
-http://luajoint.googlecode.com/svn/assets/browser1.jpg
+ http://luajoint.googlecode.com/svn/assets/browser1.jpg
 
 == 結果 ==
 
-http://luajoint.googlecode.com/svn/assets/sample1.jpg
+ http://luajoint.googlecode.com/svn/assets/sample1.jpg
 
  * [http://luajoint.googlecode.com/svn/assets/sample1.zip シーンファイル ]
  * [http://luajoint.googlecode.com/svn/assets/sample1.mov ムービー]
@@ -21,11 +21,11 @@ lua ROOT(カスタムジョイント)を動かすと、歯車とラックが連�
 
 == 設定 ==
 
-http://luajoint.googlecode.com/svn/assets/browser2.jpg
+ http://luajoint.googlecode.com/svn/assets/browser2.jpg
 
 == 結果 ==
 
-http://luajoint.googlecode.com/svn/assets/sample2.jpg
+ http://luajoint.googlecode.com/svn/assets/sample2.jpg
 
  * [http://luajoint.googlecode.com/svn/assets/sample2.zip シーンファイル ]
  * [http://luajoint.googlecode.com/svn/assets/sample2.mov ムービー]
@@ -39,11 +39,11 @@ lua ROOT(カスタムジョイント)を動かすと、全ての翼が連動し�
 
 == 設定 ==
 
-http://luajoint.googlecode.com/svn/assets/browser3.jpg
+ http://luajoint.googlecode.com/svn/assets/browser3.jpg
 
 == 結果 ==
 
-http://luajoint.googlecode.com/svn/assets/sample3.jpg
+ http://luajoint.googlecode.com/svn/assets/sample3.jpg
 
  * [http://luajoint.googlecode.com/svn/assets/sample3.zip シーンファイル ]
  * [http://luajoint.googlecode.com/svn/assets/sample3.mov ムービー]
@@ -55,11 +55,11 @@ lua ROOT(カスタムジョイント)を動かすと、クランクが連動し�
 
 == 設定 ==
 
-http://luajoint.googlecode.com/svn/assets/browser4.jpg
+ http://luajoint.googlecode.com/svn/assets/browser4.jpg
 
 == 結果 ==
 
-http://luajoint.googlecode.com/svn/assets/sample4.jpg
+ http://luajoint.googlecode.com/svn/assets/sample4.jpg
 
  * [http://luajoint.googlecode.com/svn/assets/sample4.zip シーンファイル ]
  * [http://luajoint.googlecode.com/svn/assets/sample4.mov ムービー]
