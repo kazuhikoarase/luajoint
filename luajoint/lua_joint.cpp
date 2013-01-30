@@ -122,7 +122,7 @@ void lua_joint_plugin::exec_joints(scene_interface *scene, int n, part_class *co
 
 	// setup math library
 	lua_pushcfunction(L, luaopen_math);
-    lua_call(L, 0, 0);
+	lua_call(L, 0, 0);
 
 	// setup functions
 	lua_register(L, "print", lua_print); 
