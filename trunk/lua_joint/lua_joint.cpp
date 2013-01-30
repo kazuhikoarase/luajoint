@@ -1,6 +1,6 @@
 //---------------------------------------------------------------
 //
-// Lua Joint Plugin
+// LuaJoint Plugin
 //
 // Copyright (c) 2009 Kazuhiko Arase
 //
