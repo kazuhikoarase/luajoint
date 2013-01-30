@@ -1,6 +1,6 @@
 = Lua Joint 設定例 =
 
-= (1) 異なる周期の回転ジョイントを連動 =
+= #1 異なる周期の回転ジョイントを連動 =
 
 lua ROOT(カスタムジョイント)を動かすと、全ての歯車が連動します。
 
@@ -10,7 +10,7 @@ http://luajoint.googlecode.com/svn/assets/browser1.jpg
 
 <wiki:video url="http://www.youtube.com/watch?v=Tz9r3ACcm6A"/>
 
-= (2) 直線移動ジョイントと回転ジョイントの連動 =
+= #2 直線移動ジョイントと回転ジョイントの連動 =
 
 lua ROOT(カスタムジョイント)を動かすと、歯車とラックが連動します。
 
@@ -20,7 +20,7 @@ http://luajoint.googlecode.com/svn/assets/browser2.jpg
 
 <wiki:video url="http://www.youtube.com/watch?v=ay8_PbccLsk"/>
 
-= (3) 関数を利用した連動 =
+= #3 関数を利用した連動 =
 
 lua ROOT(カスタムジョイント)を動かすと、全ての翼が連動します。 
 ダミーのカスタムジョイントに関数 fn を定義して 
@@ -33,7 +33,7 @@ http://luajoint.googlecode.com/svn/assets/browser3.jpg
 
 <wiki:video url="http://www.youtube.com/watch?v=5cNoJHgik4A"/>
 
-= (4) 子要素の位置情報を利用した連動 =
+= #4 子要素の位置情報を利用した連動 =
 
 lua ROOT(カスタムジョイント)を動かすと、クランクが連動します。 
 後々メンテナンスが困難になるかもしれませんが・・・
