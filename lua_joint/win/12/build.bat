@@ -21,7 +21,7 @@
 @rem end for VCS Express
 
 @set LUA_SRC_HOME=C:\usr\local\lua-5.1.4
-@set SHADE_SDK_HOME=C:\usr\local\Shade 11.0.0 Plugin SDK (440487)
+@set SHADE_SDK_HOME=C:\usr\local\Shade 12.0.3 Plugin SDK (453077)
 @set TARGET_NAME=lua_joint.dll
 
 @set CL_OPTS=/nologo /c /TP /MD /O2 /Ob1 /GR /EHsc /D _CRT_SECURE_NO_DEPRECATE
@@ -39,18 +39,11 @@ cl^
  /GS^
  /Gy^
  /I "%SHADE_SDK_HOME%\include"^
+ /I "%SHADE_SDK_HOME%\boost_1_43_0"^
+ /I "%SHADE_SDK_HOME%\include\openexr-1.6.1"^
+ /I "%SHADE_SDK_HOME%\include\opengl"^
  /I "%LUA_SRC_HOME%\src"^
  /wd4819^
- /D WIN32^
- /D _DEBUG^
- /D _WINDOWS^
- /D _USRDLL^
- /D SXWIN32^
- /D SXWINDOWS^
- /D PLUGIN=1^
- /D STDCALL=__stdcall^
- /D DLLEXPORT=__declspec(dllexport)^
- /D for=if(true)for^
  /D SXWINDOWS^
  /D SXWIN32^
  /D DEMO_PLUGIN=0^
@@ -62,12 +55,17 @@ cl^
  /D PLUGIN=1^
  /D STDCALL=__stdcall^
  /D DLLEXPORT=__declspec(dllexport)^
- /D NOMINMAX^
  /D for=if(true)for^
  /D _CRT_SECURE_NO_DEPRECATE^
- "%SHADE_SDK_HOME%\include\com.cpp"^
- "%SHADE_SDK_HOME%\include\vectors.cpp"^
- ..\..\lua_joint.cpp
+ /D SXPLUGIN=1^
+ /D _SECURE_SCL=0^
+ /D PLUGIN_EXPORTS^
+ /D SXCORE=^
+ /D SXMODEL=^
+ "%SHADE_SDK_HOME%\include\sx\core\com.cpp"^
+ "%SHADE_SDK_HOME%\include\sx\core\vectors.cpp"^
+ "%SHADE_SDK_HOME%\include\sx\core\debug.cpp"^
+ ..\..\lua_joint12.cpp
 
 link /nologo /DLL /OUT:%TARGET_NAME% *.obj
 
