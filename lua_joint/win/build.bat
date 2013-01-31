@@ -20,7 +20,7 @@
 @set LIB=%PLATFORM_SDK_HOME%\Lib;%LIB%
 @rem end for VCS Express
 
-@set LUA_SRC_HOME=C:\usr\local\lua-5.1.4
+@set LUA_SRC_HOME=C:\usr\local\lua-5.1.5
 @set SHADE_SDK_HOME=C:\usr\local\Shade 12.0.3 Plugin SDK (453077)
 @set TARGET_NAME=lua_joint.dll
 
