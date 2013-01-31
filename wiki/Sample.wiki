@@ -2,6 +2,8 @@
 
 <wiki:toc />
 
+ * [http://luajoint.googlecode.com/files/lua_joint_sample.zip サンプルのシーンファイルをダウンロード]
+
 = #1 異なる周期の回転ジョイントを連動 =
 
 lua ROOT(カスタムジョイント)を動かすと、全ての歯車が連動します。
