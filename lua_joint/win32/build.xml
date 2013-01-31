@@ -24,7 +24,7 @@
 	</target>
 		
 	<target name="dist" depends="init,build">
-		<zip zipfile="${target.prefix}-win-${target.suffix}.zip">
+		<zip zipfile="${target.prefix}-win32-${target.suffix}.zip">
 			<zipfileset dir="." prefix="${target.prefix}">
 				<include name="lua_joint.dll" />
 			</zipfileset>
