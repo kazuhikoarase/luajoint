@@ -2,7 +2,7 @@
 @rem
 @rem Build batch for Visual Studio 2005 Command Prompt
 @rem
-@rem Copyright (c) 2009 Kazuhiko Arase
+@rem Copyright (c) 2013 Kazuhiko Arase
 @rem
 @rem URL: http://code.google.com/p/luajoint/
 @rem
