@@ -6,27 +6,27 @@
 		<tstamp>
 			<format property="timestamp" pattern="yyyyMMddHHmm"/>
 		</tstamp>
-	    <property name="target.prefix" value="LuaJoint-Shade9" />
+	    <property name="target.prefix" value="lua_joint" />
 	    <property name="target.suffix" value="v${timestamp}" />
 	</target>
 
 	<target name="clean">
 		<delete>
 			<fileset dir=".">
+			    <include name="*.dll" />
 			    <include name="*.zip" />
 			</fileset>    
 		</delete>
 	</target>
-    	
-	<target name="dist" depends="init">
-		<zip zipfile="${target.prefix}-Win-${target.suffix}.zip">
-			<zipfileset dir="bin" prefix="${target.prefix}">
+
+	<target name="build">
+	    <exec command="build.bat" />
+	</target>
+		
+	<target name="dist" depends="init,build">
+		<zip zipfile="${target.prefix}-win-${target.suffix}.zip">
+			<zipfileset dir="." prefix="${target.prefix}">
 				<include name="lua_joint.dll" />
-			</zipfileset>
-		</zip>
-		<zip zipfile="${target.prefix}-Mac-${target.suffix}.zip">
-			<zipfileset dir="bin" prefix="${target.prefix}">
-				<include name="lua_joint.shdplugin/**/*" />
 			</zipfileset>
 		</zip>
 	</target>
