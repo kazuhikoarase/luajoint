@@ -6,8 +6,6 @@
 
 lua ROOT(カスタムジョイント)を動かすと、全ての歯車が連動します。
 
- * [http://luajoint.googlecode.com/svn/assets/sample1.zip シーンファイル]
-
 http://luajoint.googlecode.com/svn/assets/browser1.jpg
 
 <wiki:video url="http://www.youtube.com/watch?v=Tz9r3ACcm6A"/>
@@ -15,8 +13,6 @@ http://luajoint.googlecode.com/svn/assets/browser1.jpg
 = #2 直線移動ジョイントと回転ジョイントの連動 =
 
 lua ROOT(カスタムジョイント)を動かすと、歯車とラックが連動します。
-
- * [http://luajoint.googlecode.com/svn/assets/sample2.zip シーンファイル]
 
 http://luajoint.googlecode.com/svn/assets/browser2.jpg
 
@@ -29,8 +25,6 @@ lua ROOT(カスタムジョイント)を動かすと、全ての翼が連動し�
 個々のジョイントからこれを呼び出すことにより、 動きを一元制御しています。 
 また、変数 d を使って翼の角度を少しずつずらすようにしています。
 
- * [http://luajoint.googlecode.com/svn/assets/sample3.zip シーンファイル]
-
 http://luajoint.googlecode.com/svn/assets/browser3.jpg
 
 <wiki:video url="http://www.youtube.com/watch?v=5cNoJHgik4A"/>
@@ -39,8 +33,6 @@ http://luajoint.googlecode.com/svn/assets/browser3.jpg
 
 lua ROOT(カスタムジョイント)を動かすと、クランクが連動します。 
 後々メンテナンスが困難になるかもしれませんが・・・
-
- * [http://luajoint.googlecode.com/svn/assets/sample4.zip シーンファイル ]
 
 http://luajoint.googlecode.com/svn/assets/browser4.jpg
 
