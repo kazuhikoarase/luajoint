@@ -56,7 +56,6 @@ cl^
  /D STDCALL=__stdcall^
  /D DLLEXPORT=__declspec(dllexport)^
  /D for=if(true)for^
- /D _CRT_SECURE_NO_DEPRECATE^
  /D SXPLUGIN=1^
  /D _SECURE_SCL=0^
  /D PLUGIN_EXPORTS^
