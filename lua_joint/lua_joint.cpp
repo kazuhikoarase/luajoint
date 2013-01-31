@@ -2,7 +2,7 @@
 //
 // LuaJoint Plugin
 //
-// Copyright (c) 2009 Kazuhiko Arase
+// Copyright (c) 2013 Kazuhiko Arase
 //
 // URL: http://code.google.com/p/luajoint/
 //
@@ -17,18 +17,10 @@
 #include "lualib.h"
 #include "lauxlib.h"
 
-#include "motioninterface.h"
-#include "sceneinterface.h"
-#include "shapeinterface.h"
-#include "shadebuildnumber.h"
-#include "shadeinterface.h"
-#include "pluginids.h"
-#include "plugininterface.h"
-
-#include "dllentries.h"
+#include "sxsdk.cxx"
 
 
-using namespace enums;
+using namespace sxsdk::enums;
 
 
 static const sx::uuid_class LUA_JOINT_ID("4F72050B-B5F1-4800-9C56-35A7CDE0424E");
@@ -42,9 +34,9 @@ static const char* __SCENE_PTR_NAME__ = "__SCENE_PTR_NAME__";
 static const char* __CURRENT_PART_PTR_NAME__ = "__CURRENT_PART_PTR_NAME__";
 
 
-static bool is_lua_joint(part_class* part);
+static bool is_lua_joint(sxsdk::part_class* part);
 
-static part_class* get_parent_lua_joint(part_class* part, int parent_index);
+static sxsdk::part_class* get_parent_lua_joint(sxsdk::part_class* part, int parent_index);
 
 static int lua_print(lua_State* L);
 
@@ -55,68 +47,68 @@ static int lua_get_current_joint_value(lua_State* L);
 static int lua_get_joint_position(lua_State* L);
 
 
-class lua_joint_plugin : public plugin_interface {
+class lua_joint_plugin : public sxsdk::plugin_interface {
 
 public:
 
-	lua_joint_plugin(shade_interface* shade) : _shade(shade) { }
+	lua_joint_plugin(sxsdk::shade_interface* shade) : _shade(shade) { }
 
 	virtual ~lua_joint_plugin() { }
 
 private:
 
-	shade_interface* _shade;
+	sxsdk::shade_interface* _shade;
 
 	virtual sx::uuid_class get_uuid(void *) { return LUA_JOINT_ID; }
 
 	virtual int get_shade_version() const { return SHADE_BUILD_NUMBER; }
 
-	virtual void do_it(shade_interface *shade, scene_interface *scene, void *);
+	virtual void do_it(sxsdk::shade_interface *shade, sxsdk::scene_interface *scene, void *);
 
 	virtual void current_joint_value_changing(bool &,
-		scene_interface *scene, int n, part_class *const *parts, void *);
+		sxsdk::scene_interface *scene, int n, sxsdk::part_class *const *parts, void *);
 
 	virtual void current_joint_value_changed(bool &,
-		scene_interface *scene, int n, part_class *const *parts, void *);
+		sxsdk::scene_interface *scene, int n, sxsdk::part_class *const *parts, void *);
 
-	virtual void sequence_changed(bool &, 
+	virtual void sequence_changed(bool &,
 		float sequence,
-		scene_interface *scene, int n, part_class *const *parts, void*);
+		sxsdk::scene_interface *scene, int n, sxsdk::part_class *const *parts, void*);
 
-	virtual void exec_joints(scene_interface *scene, int n, part_class *const *parts);
+	virtual void exec_joints(sxsdk::scene_interface *scene, int n, sxsdk::part_class *const *parts);
 
-	virtual void exec_sub_joints(lua_State* L, scene_interface *scene, part_class* part);
+	virtual void exec_sub_joints(lua_State* L, sxsdk::scene_interface *scene, sxsdk::part_class* part);
 
-	virtual int do_lua_string(lua_State* L, scene_interface *scene, part_class* part);
+	virtual int do_lua_string(lua_State* L, sxsdk::scene_interface *scene, sxsdk::part_class* part);
 };
 
 
-void lua_joint_plugin::do_it(shade_interface *shade, scene_interface *scene, void *) {
+void lua_joint_plugin::do_it(sxsdk::shade_interface *shade, sxsdk::scene_interface *scene, void *) {
 }
 
 void lua_joint_plugin::current_joint_value_changing(
 	bool &,
-	scene_interface *scene, int n, part_class *const *parts, void *
+	sxsdk::scene_interface *scene, int n, sxsdk::part_class *const *parts, void *
 ) {
 	exec_joints(scene, n, parts);
 }
 
 void lua_joint_plugin::current_joint_value_changed(
-	bool &, 
-	scene_interface *scene, int n, part_class *const *parts, void *
+	bool &,
+	sxsdk::scene_interface *scene, int n, sxsdk::part_class *const *parts, void *
 ) {
 	exec_joints(scene, n, parts);
 }
 
 void lua_joint_plugin::sequence_changed(
 	bool &,
-	float sequence, 
-	scene_interface *scene, int n, part_class *const *parts, void *
+	float sequence,
+	sxsdk::scene_interface *scene, int n, sxsdk::part_class *const *parts, void *
 ) {
 	exec_joints(scene, n, parts);
 }
 
-void lua_joint_plugin::exec_joints(scene_interface *scene, int n, part_class *const *parts) {
+void lua_joint_plugin::exec_joints(sxsdk::scene_interface *scene, int n, sxsdk::part_class *const *parts) {
 
 	lua_State* L = lua_open();
 
@@ -125,10 +117,10 @@ void lua_joint_plugin::exec_joints(scene_interface *scene, int n, part_class *co
 	lua_call(L, 0, 0);
 
 	// setup functions
-	lua_register(L, "print", lua_print); 
-	lua_register(L, "set_v", lua_set_current_joint_value); 
-	lua_register(L, "get_v", lua_get_current_joint_value); 
-	lua_register(L, "get_p", lua_get_joint_position); 
+	lua_register(L, "print", lua_print);
+	lua_register(L, "set_v", lua_set_current_joint_value);
+	lua_register(L, "get_v", lua_get_current_joint_value);
+	lua_register(L, "get_p", lua_get_joint_position);
 
 	// setup globals
 	lua_pushlightuserdata(L, (void*)_shade);
@@ -148,22 +140,22 @@ void lua_joint_plugin::exec_joints(scene_interface *scene, int n, part_class *co
 	lua_close(L);
 }
 
-void lua_joint_plugin::exec_sub_joints(lua_State* L, scene_interface *scene, part_class* part) {
+void lua_joint_plugin::exec_sub_joints(lua_State* L, sxsdk::scene_interface *scene, sxsdk::part_class* part) {
 
-	for (shape_class::iterator it = part->begin(); it != part->end(); it++) {
+	for (sxsdk::shape_class::iterator it = part->begin(); it != part->end(); it++) {
 
-		if (it->get_type() != enums::part) {
+		if (it->get_type() != sxsdk::enums::part) {
 			continue;
 		}
 
-		part_class* sub_part = (part_class*)(shape_class*)it;
+		sxsdk::part_class* sub_part = (sxsdk::part_class*)(sxsdk::shape_class*)it;
 
 		if (!is_lua_joint(sub_part) ) {
 			continue;
 		}
 
 		int opt = sub_part->get_name()[strlen(LUA_JOINT_PREFIX)];
-		
+
 		bool callAfterChildren = (opt == '~');
 
 		if (!callAfterChildren) {
@@ -182,7 +174,7 @@ void lua_joint_plugin::exec_sub_joints(lua_State* L, scene_interface *scene, par
 	}
 }
 
-int lua_joint_plugin::do_lua_string(lua_State* L, scene_interface *scene, part_class* part) {
+int lua_joint_plugin::do_lua_string(lua_State* L, sxsdk::scene_interface *scene, sxsdk::part_class* part) {
 
 	const char* luaString = part->get_name();
 
@@ -220,18 +212,18 @@ int lua_joint_plugin::do_lua_string(lua_State* L, scene_interface *scene, part_c
 }
 
 
-bool is_lua_joint(part_class* part) {
+bool is_lua_joint(sxsdk::part_class* part) {
 
 	switch(part->get_part_type() ) {
 
-	case enums::rotator_joint :
-	case enums::slider_joint :
-	case enums::scale_joint :
-	case enums::uniscale_joint :
-	case enums::light_joint :
-	case enums::path_joint :
-	case enums::morph_joint :
-	case enums::custom_joint :
+	case sxsdk::enums::rotator_joint :
+	case sxsdk::enums::slider_joint :
+	case sxsdk::enums::scale_joint :
+	case sxsdk::enums::uniscale_joint :
+	case sxsdk::enums::light_joint :
+	case sxsdk::enums::path_joint :
+	case sxsdk::enums::morph_joint :
+	case sxsdk::enums::custom_joint :
 		break;
 
 	default :
@@ -247,7 +239,7 @@ bool is_lua_joint(part_class* part) {
 	return true;
 }
 
-part_class* get_parent_lua_joint(part_class* part, int parent_index) {
+sxsdk::part_class* get_parent_lua_joint(sxsdk::part_class* part, int parent_index) {
 
 	while (parent_index-- > 0) {
 
@@ -270,9 +262,9 @@ int lua_print(lua_State* L) {
 	const char* message = lua_tostring(L, 1);
 
 	lua_getglobal(L, __SHADE_PTR_NAME__);
-	shade_interface* shade = (shade_interface*)lua_touserdata(L, -1);
+	sxsdk::shade_interface* shade = (sxsdk::shade_interface*)lua_touserdata(L, -1);
 	lua_getglobal(L, __SCENE_PTR_NAME__);
-	scene_interface* scene = (scene_interface*)lua_touserdata(L, -1);
+	sxsdk::scene_interface* scene = (sxsdk::scene_interface*)lua_touserdata(L, -1);
 
 	if (!scene->is_rendering_thread() ) {
 		shade->message(message);
@@ -286,7 +278,7 @@ int lua_get_current_joint_value(lua_State* L) {
 	int parent_index = lua_tointeger(L, 1);
 
 	lua_getglobal(L, __CURRENT_PART_PTR_NAME__);
-	part_class* part = (part_class*)lua_touserdata(L, -1);
+	sxsdk::part_class* part = (sxsdk::part_class*)lua_touserdata(L, -1);
 
 	part = get_parent_lua_joint(part, parent_index);
 
@@ -295,7 +287,7 @@ int lua_get_current_joint_value(lua_State* L) {
 		return 1;
 	}
 
-	compointer<motion_interface> motion(part->get_motion_interface() );
+	compointer<sxsdk::motion_interface> motion(part->get_motion_interface() );
 
 	lua_pushnumber(L, motion->get_current_joint_value() );
 
@@ -307,8 +299,8 @@ int lua_set_current_joint_value(lua_State* L) {
 	double value = lua_tonumber(L, 1);
 
 	lua_getglobal(L, __CURRENT_PART_PTR_NAME__);
-	part_class* part = (part_class*)lua_touserdata(L, -1);
-	compointer<motion_interface> motion(part->get_motion_interface() );
+	sxsdk::part_class* part = (sxsdk::part_class*)lua_touserdata(L, -1);
+	compointer<sxsdk::motion_interface> motion(part->get_motion_interface() );
 
 	motion->set_current_joint_value(value);
 
@@ -320,7 +312,7 @@ int lua_get_joint_position(lua_State* L) {
 	int parent_index = (int)lua_tonumber(L, 1);
 
 	lua_getglobal(L, __CURRENT_PART_PTR_NAME__);
-	part_class* part = (part_class*)lua_touserdata(L, -1);
+	sxsdk::part_class* part = (sxsdk::part_class*)lua_touserdata(L, -1);
 
 	part = get_parent_lua_joint(part, parent_index);
 
@@ -329,20 +321,20 @@ int lua_get_joint_position(lua_State* L) {
 		return 1;
 	}
 
-	compointer<motion_interface> motion(part->get_motion_interface() );
+	compointer<sxsdk::motion_interface> motion(part->get_motion_interface() );
  
-	vec3 pos = motion->get_position() * part->get_local_to_world_matrix();
+	sxsdk::vec3 pos = motion->get_position() * part->get_local_to_world_matrix();
 
 	lua_createtable(L, 0, 3);
 
 	lua_pushstring(L, "x");
 	lua_pushnumber(L, pos.x);
 	lua_settable(L, -3);
-	
+
 	lua_pushstring(L, "y");
 	lua_pushnumber(L, pos.y);
 	lua_settable(L, -3);
-	
+
 	lua_pushstring(L, "z");
 	lua_pushnumber(L, pos.z);
 	lua_settable(L, -3);
@@ -351,18 +343,18 @@ int lua_get_joint_position(lua_State* L) {
 }
 
 
-extern "C" void STDCALL create_interface(const IID &iid, int i, void **p, shade_interface *shade, void *) {
+extern "C" void STDCALL create_interface(const IID &iid, int i, void **p, sxsdk::shade_interface *shade, void *) {
 	lua_joint_plugin *u = new lua_joint_plugin(shade);
 	u->AddRef();
 	*p = (void *)u;
 }
 
-extern "C" int STDCALL has_interface(const IID &iid, shade_interface *shade) {
+extern "C" int STDCALL has_interface(const IID &iid, sxsdk::shade_interface *shade) {
 	if (iid == plugin_iid) return 1;
 	return 0;
 }
 
-extern "C" const char * STDCALL get_name(const IID &iid, int i, shade_interface *shade, void *) {
+extern "C" const char * STDCALL get_name(const IID &iid, int i, sxsdk::shade_interface *shade, void *) {
 	if (iid == plugin_iid) return "Lua Joint";
 	return NULL;
 }
