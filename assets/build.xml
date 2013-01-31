@@ -1,0 +1,9 @@
+<project default="dist">
+    <target name="dist">
+        <zip zipfile="lua_joint_sample.zip">
+        	<zipfileset dir="." prefix="lua_joint_sample">
+        		<include name="*.shd"/>
+        	</zipfileset>
+    	</zip>
+    </target>
+</project>
