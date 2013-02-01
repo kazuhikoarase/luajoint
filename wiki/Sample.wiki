@@ -37,8 +37,10 @@ http://luajoint.googlecode.com/svn/assets/browser3.jpg
 
 = #4 子要素の位置情報を利用した連動 =
 
-lua ROOT(カスタムジョイント)を動かすと、クランクが連動します。 
-後々メンテナンスが困難になるかもしれませんが・・・
+lua ROOT(カスタムジョイント)を動かすと、クランクが連動します。
+
+子要素を部分的にテストする際に、関数が未定義でもエラーとならないよう、
+定義済みフラグという値で判断しています。
 
 http://luajoint.googlecode.com/svn/assets/browser4.jpg
 
