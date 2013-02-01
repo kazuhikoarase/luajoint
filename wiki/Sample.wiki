@@ -8,9 +8,9 @@ lua ROOT(カスタムジョイント)を動かすと、全ての歯車が連動�
 
 http://luajoint.googlecode.com/svn/assets/browser1.jpg
 
-<wiki:video url="http://www.youtube.com/watch?v=Tz9r3ACcm6A"/>
-
 >> [http://code.google.com/p/luajoint/downloads/list サンプルをダウンロード]
+
+<wiki:video url="http://www.youtube.com/watch?v=Tz9r3ACcm6A"/>
 
 = #2 直線移動ジョイントと回転ジョイントの連動 =
 
@@ -18,9 +18,9 @@ lua ROOT(カスタムジョイント)を動かすと、歯車とラックが連�
 
 http://luajoint.googlecode.com/svn/assets/browser2.jpg
 
-<wiki:video url="http://www.youtube.com/watch?v=ay8_PbccLsk"/>
-
 >> [http://code.google.com/p/luajoint/downloads/list サンプルをダウンロード]
+
+<wiki:video url="http://www.youtube.com/watch?v=ay8_PbccLsk"/>
 
 = #3 関数を利用した連動 =
 
@@ -31,9 +31,9 @@ lua ROOT(カスタムジョイント)を動かすと、全ての翼が連動し�
 
 http://luajoint.googlecode.com/svn/assets/browser3.jpg
 
-<wiki:video url="http://www.youtube.com/watch?v=5cNoJHgik4A"/>
-
 >> [http://code.google.com/p/luajoint/downloads/list サンプルをダウンロード]
+
+<wiki:video url="http://www.youtube.com/watch?v=5cNoJHgik4A"/>
 
 = #4 子要素の位置情報を利用した連動 =
 
@@ -42,6 +42,6 @@ lua ROOT(カスタムジョイント)を動かすと、クランクが連動し�
 
 http://luajoint.googlecode.com/svn/assets/browser4.jpg
 
-<wiki:video url="http://www.youtube.com/watch?v=EkolCZ7Ce5Q"/>
-
 >> [http://code.google.com/p/luajoint/downloads/list サンプルをダウンロード]
+
+<wiki:video url="http://www.youtube.com/watch?v=EkolCZ7Ce5Q"/>
