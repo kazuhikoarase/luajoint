@@ -1,4 +1,4 @@
-= !LuaJoint 設定例 =
+= !Lua Joint 設定例 =
 
 <wiki:toc />
 
