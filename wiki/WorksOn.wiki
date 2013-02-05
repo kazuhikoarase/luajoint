@@ -2,10 +2,10 @@
 
 == lua_joint-win32-v201302042150.zip ==
 
- * 10.5.3
- * 12.0.3
- * 12.1.0
+ * Shade 10.5.3 Standard
+ * Shade 12.0.3 Standard
+ * Shade 12.1.0 Standard
 
 == lua_joint-mac-v201302051322.zip ==
 
- * 13.2
+ * Shade 13.2 Standard
