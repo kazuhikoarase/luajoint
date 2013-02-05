@@ -19,7 +19,7 @@
 	</target>
 
 	<target name="dist" depends="init">
-		<zip zipfile="${target.prefix}-mac64-${target.suffix}.zip">
+		<zip zipfile="${target.prefix}-mac-${target.suffix}.zip">
 			<zipfileset dir="." prefix="${target.prefix}">
 				<include name="lua_joint.shdplugin/**" />
 			</zipfileset>
