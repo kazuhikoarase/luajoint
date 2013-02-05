@@ -1,0 +1,29 @@
+<project basedir="." default="all">
+
+	<target name="all" depends="dist" />
+
+    <target name="init">
+		<tstamp>
+			<format property="timestamp" pattern="yyyyMMddHHmm"/>
+		</tstamp>
+	    <property name="target.prefix" value="lua_joint" />
+	    <property name="target.suffix" value="v${timestamp}" />
+	</target>
+
+	<target name="clean">
+		<delete>
+			<fileset dir=".">
+			    <include name="*.zip" />
+			</fileset>    
+		</delete>
+	</target>
+
+	<target name="dist" depends="init">
+		<zip zipfile="${target.prefix}-mac64-${target.suffix}.zip">
+			<zipfileset dir="." prefix="${target.prefix}">
+				<include name="lua_joint.shdplugin/**" />
+			</zipfileset>
+		</zip>
+	</target>
+
+</project>
