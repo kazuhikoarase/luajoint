@@ -40,7 +40,7 @@ http://luajoint.googlecode.com/svn/assets/browser3.jpg
 lua ROOT(カスタムジョイント)を動かすと、クランクが連動します。
 
 子要素を部分的にテストする際に、関数が未定義でもエラーとならないよう、
-定義済みフラグという値で判断しています。
+定義済みフラグ flg で判断しています。
 
 http://luajoint.googlecode.com/svn/assets/browser4.jpg
 
