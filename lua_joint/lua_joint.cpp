@@ -1,8 +1,8 @@
 //---------------------------------------------------------------
 //
-// LuaJoint Plugin
+// Lua Joint Plugin
 //
-// Copyright (c) 2013 Kazuhiko Arase
+// Copyright (c) 2009-2013 Kazuhiko Arase
 //
 // URL: http://code.google.com/p/luajoint/
 //
